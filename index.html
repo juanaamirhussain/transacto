@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
 <meta name="description" content="PRODUCT CATALOGUE - GHEBBAZAR.XYZ">
 <meta name="theme-color" content="#0b1020">
 <title>PRODUCT CATALOGUE - GHEBBAZAR.XYZ</title>
@@ -17,22 +17,25 @@
 :root{
     --bg:#f4f7fb;
     --card:#ffffff;
-    --text:#111827;
-    --muted:#6b7280;
+    --text:#0f172a;
+    --muted:#64748b;
     --primary:#2563eb;
     --primary-dark:#1d4ed8;
     --danger:#dc2626;
     --success:#16a34a;
-    --border:#e5e7eb;
+    --border:#e2e8f0;
     --dark:#0b1020;
     --shadow:0 12px 35px rgba(15,23,42,.10);
+    --radius:18px;
 }
 
 body{
-    font-family:Inter,Arial,Helvetica,sans-serif;
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     background:var(--bg);
     color:var(--text);
     min-height:100vh;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
 }
 
 /* ================= HEADER ================= */
@@ -41,26 +44,28 @@ body{
     position:sticky;
     top:0;
     z-index:1000;
-    background:rgba(11,16,32,.96);
-    backdrop-filter:blur(15px);
+    background:rgba(11,16,32,.97);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
     color:white;
-    box-shadow:0 5px 25px rgba(0,0,0,.15);
+    box-shadow:0 4px 20px rgba(0,0,0,.15);
 }
 
 .header-inner{
-    max-width:1400px;
+    max-width:1440px;
     margin:auto;
-    padding:15px 20px;
+    padding:12px clamp(12px, 2.5vw, 24px);
     display:flex;
     align-items:center;
-    gap:18px;
+    gap:clamp(10px, 2vw, 20px);
 }
 
 .logo{
-    font-size:25px;
+    font-size:clamp(18px, 3.5vw, 24px);
     font-weight:900;
-    letter-spacing:-1px;
+    letter-spacing:-0.5px;
     white-space:nowrap;
+    color:#f8fafc;
 }
 
 .logo span{
@@ -70,42 +75,53 @@ body{
 .search-wrap{
     flex:1;
     position:relative;
+    min-width:140px;
 }
 
 .search{
     width:100%;
-    height:44px;
-    border:none;
+    height:42px;
+    border:1px solid rgba(255,255,255,.1);
     outline:none;
-    border-radius:13px;
-    padding:0 18px;
-    background:#1f2937;
+    border-radius:12px;
+    padding:0 16px;
+    background:#1e293b;
     color:white;
-    font-size:15px;
+    font-size:clamp(13px, 2vw, 15px);
+    transition:all .2s;
+}
+
+.search:focus{
+    background:#27354f;
+    border-color:#3b82f6;
+    box-shadow:0 0 0 3px rgba(59,130,246,.25);
 }
 
 .search::placeholder{
-    color:#9ca3af;
+    color:#94a3b8;
 }
 
 .header-actions{
     display:flex;
-    gap:9px;
+    gap:8px;
+    align-items:center;
 }
 
 .header-btn{
-    border:1px solid rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.16);
     background:#182033;
     color:white;
     min-height:42px;
-    padding:0 16px;
+    padding:0 clamp(10px, 1.8vw, 18px);
     border-radius:12px;
     cursor:pointer;
     font-weight:700;
+    font-size:clamp(12px, 1.8vw, 14px);
     transition:.2s;
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:7px;
+    white-space:nowrap;
 }
 
 .header-btn:hover{
@@ -118,51 +134,54 @@ body{
     color:white;
     padding:2px 8px;
     border-radius:999px;
-    font-size:12px;
+    font-size:11px;
     font-weight:800;
 }
 
-/* ================= MAIN ================= */
+/* ================= MAIN CONTAINER ================= */
 
 .container{
-    max-width:1400px;
+    max-width:1440px;
     margin:auto;
-    padding:28px 20px 60px;
+    padding:clamp(14px, 2.5vw, 28px) clamp(10px, 2.5vw, 24px) 60px;
 }
 
 .hero{
     background:
-        radial-gradient(circle at 80% 20%,rgba(96,165,250,.25),transparent 35%),
-        linear-gradient(135deg,#111827,#0b1020);
-    border-radius:24px;
-    padding:36px 40px;
+        radial-gradient(circle at 80% 20%,rgba(96,165,250,.22),transparent 40%),
+        linear-gradient(135deg,#0f172a,#0b1020);
+    border-radius:clamp(14px, 2vw, 22px);
+    padding:clamp(20px, 3.5vw, 36px) clamp(16px, 3.5vw, 36px);
     color:white;
-    margin-bottom:24px;
+    margin-bottom:20px;
     overflow:hidden;
     position:relative;
+    box-shadow:0 10px 30px rgba(11,16,32,.12);
 }
 
 .hero h1{
-    font-size:clamp(28px,4.5vw,48px);
-    line-height:1.1;
-    margin-bottom:12px;
+    font-size:clamp(22px, 4vw, 40px);
+    line-height:1.2;
+    margin-bottom:10px;
+    font-weight:900;
+    letter-spacing:-0.5px;
 }
 
 .hero p{
     color:#cbd5e1;
-    max-width:650px;
-    line-height:1.7;
-    font-size:15px;
+    max-width:680px;
+    line-height:1.6;
+    font-size:clamp(13px, 1.8vw, 15px);
 }
 
 .toolbar{
     display:flex;
     flex-direction:column;
-    gap:16px;
-    margin-bottom:24px;
+    gap:14px;
+    margin-bottom:22px;
     background:white;
-    padding:20px;
-    border-radius:18px;
+    padding:clamp(14px, 2vw, 20px);
+    border-radius:clamp(12px, 1.8vw, 18px);
     border:1px solid var(--border);
     box-shadow:0 2px 10px rgba(0,0,0,.02);
 }
@@ -170,22 +189,22 @@ body{
 .filter-section{
     display:flex;
     align-items:center;
-    gap:12px;
+    gap:10px;
     flex-wrap:wrap;
 }
 
 .filter-label{
     font-weight:800;
-    font-size:13px;
-    color:#4b5563;
+    font-size:12px;
+    color:#475569;
     text-transform:uppercase;
     letter-spacing:.6px;
-    min-width:70px;
+    min-width:65px;
 }
 
 .filters{
     display:flex;
-    gap:8px;
+    gap:7px;
     flex-wrap:wrap;
     flex:1;
 }
@@ -194,12 +213,13 @@ body{
     border:1px solid var(--border);
     background:#f8fafc;
     color:#334155;
-    padding:8px 14px;
-    border-radius:10px;
+    padding:7px 13px;
+    border-radius:9px;
     cursor:pointer;
     font-weight:700;
-    font-size:13px;
+    font-size:clamp(12px, 1.6vw, 13px);
     transition:.2s;
+    user-select:none;
 }
 
 .filter:hover{
@@ -216,44 +236,90 @@ body{
 .product-count{
     color:var(--muted);
     font-weight:800;
-    font-size:14px;
+    font-size:clamp(12px, 1.6vw, 14px);
 }
 
-/* ================= PRODUCT GRID ================= */
+/* ================= PRODUCT GRID (RESPONSIVE AUTO-ADJUSTING) ================= */
 
 .product-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-    gap:22px;
+    grid-template-columns:repeat(auto-fill, minmax(clamp(220px, 23vw, 280px), 1fr));
+    gap:clamp(12px, 2vw, 22px);
+    align-items:stretch;
 }
 
 .product-card{
     background:var(--card);
     border:1px solid var(--border);
-    border-radius:20px;
+    border-radius:clamp(14px, 1.8vw, 18px);
     overflow:hidden;
-    box-shadow:0 5px 20px rgba(15,23,42,.06);
-    transition:.25s;
+    box-shadow:0 4px 16px rgba(15,23,42,.05);
+    transition:transform .22s cubic-bezier(.22,.61,.36,1), box-shadow .22s cubic-bezier(.22,.61,.36,1);
     cursor:pointer;
     display:flex;
     flex-direction:column;
+    position:relative;
 }
 
 .product-card:hover{
-    transform:translateY(-5px);
-    box-shadow:var(--shadow);
+    transform:translateY(-4px);
+    box-shadow:0 16px 32px rgba(15,23,42,.12);
+    border-color:#cbd5e1;
+}
+
+.product-image-wrap{
+    position:relative;
+    width:100%;
+    aspect-ratio:4 / 3;
+    background:#eef2f7;
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .product-image{
     width:100%;
-    height:250px;
+    height:100%;
     object-fit:cover;
     display:block;
-    background:#eef2f7;
+    transition:transform .4s ease;
+}
+
+.product-card:hover .product-image{
+    transform:scale(1.05);
+}
+
+/* Small Transparent Caption Overlay */
+.image-caption{
+    position:absolute;
+    bottom:8px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(15, 23, 42, 0.70);
+    backdrop-filter:blur(6px);
+    -webkit-backdrop-filter:blur(6px);
+    color:#ffffff;
+    font-size:clamp(10px, 1.4vw, 11px);
+    font-weight:700;
+    padding:4px 11px;
+    border-radius:999px;
+    pointer-events:none;
+    white-space:nowrap;
+    box-shadow:0 2px 8px rgba(0,0,0,0.3);
+    border:1px solid rgba(255,255,255,0.22);
+    letter-spacing:0.2px;
+    transition:all .2s;
+}
+
+.product-card:hover .image-caption{
+    background:rgba(15, 23, 42, 0.88);
+    transform:translateX(-50%) translateY(-2px);
+    box-shadow:0 4px 12px rgba(0,0,0,0.4);
 }
 
 .product-info{
-    padding:18px;
+    padding:clamp(12px, 1.8vw, 18px);
     display:flex;
     flex-direction:column;
     flex:1;
@@ -263,52 +329,55 @@ body{
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:8px;
+    gap:6px;
     margin-bottom:6px;
 }
 
 .category{
-    font-size:12px;
+    font-size:11px;
     color:var(--primary);
     font-weight:800;
     text-transform:uppercase;
     letter-spacing:.6px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
 }
 
 .store-badge{
-    font-size:11px;
+    font-size:10.5px;
     background:#eff6ff;
     color:#1e40af;
     border:1px solid #bfdbfe;
-    padding:2px 8px;
+    padding:2px 7px;
     border-radius:6px;
     font-weight:700;
     white-space:nowrap;
 }
 
 .product-name{
-    font-size:18px;
+    font-size:clamp(15px, 2vw, 17px);
     font-weight:800;
     color:#0f172a;
-    margin:4px 0 8px;
+    margin:2px 0 6px;
     line-height:1.3;
 }
 
 .product-description{
-    color:#4b5563;
-    font-size:14px;
-    line-height:1.6;
+    color:#475569;
+    font-size:clamp(12px, 1.6vw, 13.5px);
+    line-height:1.5;
     white-space:pre-line;
-    margin-bottom:16px;
+    margin-bottom:12px;
     word-break:break-word;
     background:#f8fafc;
-    padding:10px 12px;
-    border-radius:10px;
+    padding:8px 10px;
+    border-radius:9px;
     border:1px solid #f1f5f9;
 }
 
 .price{
-    font-size:22px;
+    font-size:clamp(18px, 2.5vw, 21px);
     font-weight:900;
     margin-top:auto;
     color:#0f172a;
@@ -318,22 +387,22 @@ body{
 }
 
 .price span{
-    font-size:14px;
+    font-size:13px;
     color:var(--muted);
     font-weight:700;
 }
 
 .card-actions{
     display:flex;
-    gap:8px;
-    margin-top:14px;
+    gap:7px;
+    margin-top:12px;
 }
 
 .btn{
     border:none;
-    border-radius:11px;
-    min-height:40px;
-    padding:9px 15px;
+    border-radius:10px;
+    min-height:38px;
+    padding:8px 14px;
     cursor:pointer;
     font-weight:800;
     transition:.2s;
@@ -341,11 +410,17 @@ body{
     align-items:center;
     justify-content:center;
     gap:6px;
-    font-size:14px;
+    font-size:clamp(12.5px, 1.6vw, 13.5px);
+    text-decoration:none;
+    user-select:none;
 }
 
 .btn:hover{
     transform:translateY(-1px);
+}
+
+.btn:active{
+    transform:translateY(0);
 }
 
 .btn-primary{
@@ -358,8 +433,12 @@ body{
 }
 
 .btn-dark{
-    background:#111827;
+    background:#0f172a;
     color:white;
+}
+
+.btn-dark:hover{
+    background:#1e293b;
 }
 
 .btn-danger{
@@ -368,12 +447,12 @@ body{
 }
 
 .btn-success{
-    background:#25d366;
+    background:#16a34a;
     color:white;
 }
 
 .btn-success:hover{
-    background:#1eaa52;
+    background:#15803d;
 }
 
 .btn-full{
@@ -386,12 +465,13 @@ body{
     position:fixed;
     inset:0;
     z-index:3000;
-    background:rgba(2,6,23,.72);
+    background:rgba(2,6,23,.75);
     backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
     display:none;
     align-items:center;
     justify-content:center;
-    padding:18px;
+    padding:clamp(10px, 2vw, 20px);
 }
 
 .modal.show{
@@ -400,26 +480,26 @@ body{
 
 .modal-box{
     width:min(1050px,100%);
-    max-height:94vh;
-    overflow:auto;
+    max-height:92vh;
+    overflow-y:auto;
     background:white;
-    border-radius:24px;
-    box-shadow:0 30px 80px rgba(0,0,0,.3);
+    border-radius:clamp(16px, 2.5vw, 24px);
+    box-shadow:0 30px 80px rgba(0,0,0,.35);
     position:relative;
 }
 
 .close{
     position:absolute;
-    right:15px;
-    top:15px;
+    right:12px;
+    top:12px;
     z-index:20;
-    width:42px;
-    height:42px;
+    width:38px;
+    height:38px;
     border:none;
     border-radius:50%;
-    background:rgba(17,24,39,.8);
+    background:rgba(15,23,42,.85);
     color:white;
-    font-size:24px;
+    font-size:22px;
     cursor:pointer;
     display:flex;
     align-items:center;
@@ -428,35 +508,40 @@ body{
 }
 
 .close:hover{
-    background:#111827;
+    background:#0f172a;
     transform:scale(1.08);
 }
 
-/* ================= PRODUCT DETAILS ================= */
+/* ================= PRODUCT DETAILS MODAL (RESPONSIVE AUTO-ADJUSTING) ================= */
 
 .details-grid{
     display:grid;
-    grid-template-columns:1.05fr 1fr;
+    grid-template-columns:minmax(0, 1.05fr) minmax(0, 1fr);
 }
 
 .details-gallery{
-    padding:20px;
+    padding:clamp(14px, 2.5vw, 24px);
     background:#f8fafc;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
 }
 
 .slider{
     position:relative;
     width:100%;
     overflow:hidden;
-    border-radius:20px;
-    background:#e5e7eb;
-    aspect-ratio:1/1;
+    border-radius:clamp(12px, 2vw, 18px);
+    background:#0f172a;
+    aspect-ratio:1 / 1;
+    max-height:min(55vh, 460px);
+    margin:auto;
 }
 
 .slider-track{
     display:flex;
     height:100%;
-    transition:transform .55s cubic-bezier(.22,.61,.36,1);
+    transition:transform .45s cubic-bezier(.22,.61,.36,1);
 }
 
 .slide{
@@ -465,70 +550,84 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
+    background:#000000;
 }
 
-.slide img, .slide video{
+.slide img{
     width:100%;
     height:100%;
     object-fit:contain;
-    background:#f8fafc;
+    background:#0f172a;
+}
+
+.slide video{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    background:#000000;
 }
 
 .slider-arrow{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    width:44px;
-    height:44px;
+    width:40px;
+    height:40px;
     border:none;
     border-radius:50%;
-    background:rgba(15,23,42,.72);
+    background:rgba(15,23,42,.75);
     color:white;
-    font-size:24px;
+    font-size:22px;
     cursor:pointer;
     z-index:5;
     transition:.2s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
 .slider-arrow:hover{
-    background:#111827;
-    transform:translateY(-50%) scale(1.05);
+    background:#0f172a;
+    transform:translateY(-50%) scale(1.06);
 }
 
 .slider-prev{
-    left:12px;
+    left:10px;
 }
 
 .slider-next{
-    right:12px;
+    right:10px;
 }
 
 .slider-dots{
     position:absolute;
-    bottom:14px;
+    bottom:12px;
     left:50%;
     transform:translateX(-50%);
     display:flex;
-    gap:7px;
-    padding:7px 10px;
+    gap:6px;
+    padding:6px 10px;
     border-radius:20px;
-    background:rgba(15,23,42,.6);
+    background:rgba(15,23,42,.65);
+    max-width:90%;
+    overflow-x:auto;
 }
 
 .dot{
-    width:8px;
-    height:8px;
+    width:7px;
+    height:7px;
     border-radius:50%;
     background:#cbd5e1;
     border:none;
     padding:0;
     cursor:pointer;
     transition:.2s;
+    flex-shrink:0;
 }
 
 .dot.active{
     background:white;
-    width:22px;
+    width:18px;
     border-radius:10px;
 }
 
@@ -537,17 +636,18 @@ body{
     gap:8px;
     margin-top:12px;
     overflow-x:auto;
-    padding-bottom:3px;
+    padding-bottom:4px;
 }
 
 .thumbnail{
-    flex:0 0 70px;
-    height:70px;
-    border-radius:10px;
+    flex:0 0 clamp(54px, 9vw, 68px);
+    height:clamp(54px, 9vw, 68px);
+    border-radius:8px;
     overflow:hidden;
     border:2px solid transparent;
     cursor:pointer;
-    background:#e5e7eb;
+    background:#e2e8f0;
+    position:relative;
 }
 
 .thumbnail.active{
@@ -561,55 +661,68 @@ body{
 }
 
 .details-content{
-    padding:40px;
+    padding:clamp(18px, 3.5vw, 36px);
+    display:flex;
+    flex-direction:column;
 }
 
 .details-category{
     color:var(--primary);
-    font-size:13px;
+    font-size:12px;
     font-weight:900;
     text-transform:uppercase;
+    letter-spacing:.6px;
 }
 
 .details-title{
-    font-size:clamp(28px,4vw,42px);
-    margin:8px 0;
+    font-size:clamp(22px, 3.5vw, 34px);
+    margin:6px 0 10px;
+    font-weight:900;
+    line-height:1.2;
+    color:#0f172a;
 }
 
 .details-price{
-    font-size:30px;
+    font-size:clamp(24px, 3.5vw, 32px);
     font-weight:900;
-    margin:15px 0;
+    margin:10px 0 16px;
+    color:#0f172a;
 }
 
 .details-description{
-    color:#4b5563;
-    line-height:1.8;
+    color:#475569;
+    line-height:1.7;
     white-space:pre-line;
     word-break:break-word;
+    font-size:clamp(13px, 1.8vw, 15px);
+    background:#f8fafc;
+    padding:12px 14px;
+    border-radius:12px;
+    border:1px solid #f1f5f9;
 }
 
 .details-actions{
     display:flex;
     gap:10px;
-    margin-top:25px;
+    margin-top:22px;
+    flex-wrap:wrap;
 }
 
-/* ================= CART ================= */
+/* ================= CART MODAL ================= */
 
 .cart-header{
     background:linear-gradient(135deg,#0b1020,#1e293b);
     color:white;
-    padding:25px 30px;
+    padding:clamp(18px, 2.5vw, 25px);
 }
 
 .cart-header h2{
-    font-size:25px;
+    font-size:clamp(20px, 3vw, 24px);
 }
 
 .cart-items{
-    padding:25px;
-    max-height:350px;
+    padding:clamp(14px, 2vw, 22px);
+    max-height:340px;
     overflow-y:auto;
 }
 
@@ -621,11 +734,12 @@ body{
     padding:12px 0;
 }
 
-.cart-item img{
-    width:70px;
-    height:70px;
-    border-radius:10px;
+.cart-item img, .cart-item video{
+    width:64px;
+    height:64px;
+    border-radius:9px;
     object-fit:cover;
+    background:#e2e8f0;
 }
 
 .cart-info{
@@ -633,34 +747,37 @@ body{
 }
 
 .cart-total{
-    padding:20px 25px;
+    padding:18px clamp(14px, 2vw, 24px);
     border-top:1px solid var(--border);
-    font-size:22px;
+    font-size:clamp(18px, 2.5vw, 21px);
     font-weight:900;
     display:flex;
     justify-content:space-between;
     align-items:center;
+    flex-wrap:wrap;
+    gap:10px;
 }
 
 .form-field{
     display:flex;
     flex-direction:column;
-    gap:6px;
+    gap:5px;
 }
 
 .form-field label{
     font-weight:800;
-    font-size:14px;
+    font-size:13px;
     color:#1e293b;
 }
 
 .form-field input, .form-field textarea{
     width:100%;
     border:1px solid #cbd5e1;
-    border-radius:11px;
-    padding:11px 13px;
+    border-radius:10px;
+    padding:10px 12px;
     outline:none;
     font:inherit;
+    font-size:14px;
 }
 
 .form-field input:focus, .form-field textarea:focus{
@@ -670,29 +787,31 @@ body{
 
 .empty{
     text-align:center;
-    padding:70px 20px;
+    padding:50px 16px;
     color:var(--muted);
 }
 
 .empty h3{
     color:var(--text);
-    margin-bottom:7px;
+    margin-bottom:6px;
 }
 
 .toast{
     position:fixed;
-    bottom:25px;
+    bottom:20px;
     left:50%;
     transform:translate(-50%,120px);
-    background:#111827;
+    background:#0f172a;
     color:white;
-    padding:13px 20px;
-    border-radius:13px;
+    padding:12px 18px;
+    border-radius:12px;
     z-index:6000;
     box-shadow:var(--shadow);
     opacity:0;
-    transition:.3s;
+    transition:.3s cubic-bezier(.22,.61,.36,1);
     font-weight:700;
+    font-size:14px;
+    pointer-events:none;
 }
 
 .toast.show{
@@ -700,13 +819,27 @@ body{
     opacity:1;
 }
 
-@media(max-width:800px){
-    .header-inner{
-        flex-wrap:wrap;
+/* ================= RESPONSIVE DISPLAY SETTINGS ================= */
+
+@media(max-width:850px){
+    .details-grid{
+        grid-template-columns:1fr;
+    }
+    .slider{
+        max-height:min(50vh, 380px);
+    }
+    .details-content{
+        padding:20px 16px 24px;
+    }
+    .details-gallery{
         padding:12px;
     }
-    .logo{
-        font-size:21px;
+}
+
+@media(max-width:768px){
+    .header-inner{
+        flex-wrap:wrap;
+        padding:10px 14px;
     }
     .search-wrap{
         order:3;
@@ -715,52 +848,15 @@ body{
     .header-actions{
         margin-left:auto;
     }
-    .header-btn{
-        padding:0 12px;
-    }
     .container{
-        padding:18px 12px 40px;
-    }
-    .hero{
-        padding:24px 20px;
-        border-radius:18px;
-    }
-    .product-grid{
-        grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-        gap:14px;
-    }
-    .product-image{
-        height:210px;
-    }
-    .product-info{
-        padding:14px;
-    }
-    .product-name{
-        font-size:16px;
-    }
-    .price{
-        font-size:19px;
-    }
-    .card-actions{
-        flex-direction:row;
-    }
-    .details-grid{
-        grid-template-columns:1fr;
-    }
-    .details-content{
-        padding:25px 20px 30px;
-    }
-    .details-gallery{
-        padding:12px;
+        padding:14px 10px 40px;
     }
 }
 
-@media(max-width:480px){
+@media(max-width:500px){
     .product-grid{
-        grid-template-columns:1fr;
-    }
-    .product-image{
-        height:230px;
+        grid-template-columns:repeat(auto-fill, minmax(min(100%, 250px), 1fr));
+        gap:12px;
     }
     .filter-label{
         min-width:auto;
@@ -770,6 +866,19 @@ body{
         flex-direction:column;
         align-items:flex-start;
         gap:6px;
+    }
+    .details-actions{
+        flex-direction:column;
+    }
+    .details-actions .btn{
+        width:100%;
+    }
+    .cart-total{
+        flex-direction:column;
+        align-items:stretch;
+    }
+    .cart-total .btn{
+        width:100%;
     }
 }
 </style>
@@ -811,8 +920,10 @@ body{
     <section class="hero">
         <h1>PRODUCT CATALOGUE</h1>
         <p>
-            Browse our latest products, view full details, add items to your cart, and place your order conveniently via WhatsApp.
+            Browse our catalogue, explore full details and media, click Order Now for instant WhatsApp checkout, or add items to your cart.
         </p>
+        <p style="text-align: right;">تحصیل پندی گھیب میں نئی وسیکنڈ ہینڈاشیاءکی خریدہ فروخت کا واحد آنلائن مرکز</p>
+        <p style="text-align: end;">ہمارے پیج پر اپنی پروڈکٹس کو لسٹ کرنے کےلیے ابھی 03125136107واٹس ایپ پر رابطہ کریں۔شکریہ</p>
     </section>
 
     
@@ -820,7 +931,7 @@ body{
     <div class="toolbar">
 
         <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; border-bottom:1px solid #f1f5f9; padding-bottom:12px;">
-            <div style="font-size:16px; font-weight:800; color:#0f172a;">Filter Products</div>
+            <div style="font-size:15px; font-weight:800; color:#0f172a;">Filter Products</div>
             <div class="product-count" id="productCount">0 products</div>
         </div>
 
@@ -845,18 +956,18 @@ body{
 <!-- ================= POPUP ANNOUNCEMENT MODAL ================= -->
 
 <div id="popupModal" class="modal">
-    <div class="modal-box" style="max-width:550px; padding:32px 28px; text-align:center; position:relative;">
+    <div class="modal-box" style="max-width:520px; padding:28px 24px; text-align:center; position:relative;">
         <button class="close" onclick="closeModal('popupModal')" style="top:12px; right:12px;">×</button>
-        <div style="font-size:42px; margin-bottom:12px;">📢</div>
-        <h3 style="font-size:22px; font-weight:800; margin-bottom:14px; color:var(--text);">
+        <div style="font-size:38px; margin-bottom:10px;">📢</div>
+        <h3 style="font-size:20px; font-weight:800; margin-bottom:12px; color:var(--text);">
             Notice & Announcement
         </h3>
-        <p id="popupText" style="font-size:15px; color:#4b5563; line-height:1.6; margin-bottom:22px; white-space:pre-line;">
+        <p id="popupText" style="font-size:14.5px; color:#475569; line-height:1.6; margin-bottom:20px; white-space:pre-line;">
         </p>
         <div style="font-size:13px; color:var(--muted); margin-bottom:16px; font-weight:600;" id="popupTimerText">
             Closing automatically in <span id="popupCountdown" style="color:var(--primary); font-weight:800;">7</span>s...
         </div>
-        <button class="btn btn-primary" onclick="closeModal('popupModal')" style="width:100%; min-height:44px;">
+        <button class="btn btn-primary" onclick="closeModal('popupModal')" style="width:100%; min-height:42px;">
             Got it, continue to shop
         </button>
     </div>
@@ -882,13 +993,15 @@ body{
 
                     <button
                         class="slider-arrow slider-prev"
-                        onclick="changeSlide(-1)">
+                        onclick="changeSlide(-1)"
+                        aria-label="Previous image">
                         ‹
                     </button>
 
                     <button
                         class="slider-arrow slider-next"
-                        onclick="changeSlide(1)">
+                        onclick="changeSlide(1)"
+                        aria-label="Next image">
                         ›
                     </button>
 
@@ -913,15 +1026,15 @@ body{
                 <div class="details-actions">
 
                     <button
-                        class="btn btn-primary btn-full"
-                        onclick="addCurrentProductToCart()">
-                        🛒 Add to Cart
+                        class="btn btn-success btn-full"
+                        onclick="orderCurrentProduct()">
+                        🛍️ Order Now on WhatsApp
                     </button>
 
                     <button
-                        class="btn btn-success btn-full"
-                        onclick="orderCurrentProduct()">
-                        WhatsApp Order
+                        class="btn btn-dark btn-full"
+                        onclick="addCurrentProductToCart()">
+                        🛒 Add to Cart
                     </button>
 
                 </div>
@@ -938,7 +1051,7 @@ body{
 
 <div id="cartModal" class="modal">
 
-    <div class="modal-box" style="max-width:650px;">
+    <div class="modal-box" style="max-width:620px;">
 
         <button class="close" onclick="closeModal('cartModal')">
             ×
@@ -946,15 +1059,15 @@ body{
 
         <div class="cart-header">
             <h2>Your Cart</h2>
-            <p style="color:#cbd5e1;margin-top:5px;font-size:14px;">
+            <p style="color:#cbd5e1;margin-top:4px;font-size:13.5px;">
                 Review your items before placing your WhatsApp order
             </p>
         </div>
 
         <div id="cartItems" class="cart-items"></div>
 
-        <div style="padding:20px 25px; border-top:1px solid var(--border); background:#fafafa;">
-            <div class="form-field" style="margin-bottom:14px;">
+        <div style="padding:18px 22px; border-top:1px solid var(--border); background:#fafafa;">
+            <div class="form-field" style="margin-bottom:12px;">
                 <label>Your Full Name *</label>
                 <input id="custName" type="text" placeholder="Enter your full name">
             </div>
@@ -986,10 +1099,10 @@ body{
 
 <script>
 
-var WHATSAPP_NUMBER = "923295453167";
+var WHATSAPP_NUMBER = "923125136107";
 var STORE_NAME = "GHEBBAZAR.XYZ";
 var POPUP_NOTE = "";
-var INITIAL_PRODUCTS = [{"id":"IXOMJLT1H","name":" BAREEZE  EMBROIDERED KHADDAR 2 PIECE","code":"103","brand":"BAREEZE KHADDAR","category":"BAREEZE KHADDAR","price":2300,"stock":0,"unit":"piece","image":"https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(1).jpeg","images":["https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(1).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(2).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(3).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(4).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(5).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(6).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(7).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(8).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(9).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(10).jpeg"],"details":"MOST DEMANDING BAREEZE  EMBROIDERED khaddar 2 PIECE \nBareeze Khaddar | 2pcs \nPure khaddar  ✅ \n⚫️ Front fully embroidered shirt \n⚫️ sleeves plane\n⚫️ back plane \n⚫️ dyed khaddar  trouser  \n❤️Shirt cutting 3 Gaz \n❤️Trouser Cutting 2.5.   Gaz \n\n*Wholesale Price 2300\nExcluded delivery","storeId":"STORE_PMHTTXWAY"},{"id":"HW51I3LT4","name":" BAREEZE  EMBROIDERED KHADDAR 2 PIECE","code":"104","brand":"GENERAL","category":"GENERAL","price":2300,"stock":0,"unit":"piece","image":"https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(11).jpeg","images":["https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(11).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(12).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(13).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(14).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(15).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(16).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(17).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(18).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(19).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(20).jpeg"],"details":"MOST DEMANDING BAREEZE  EMBROIDERED khaddar 2 PIECE \nBareeze Khaddar | 2pcs \nPure khaddar  ✅ \n⚫️ Front fully embroidered shirt \n⚫️ sleeves plane\n⚫️ back plane \n⚫️ dyed khaddar  trouser  \n❤️Shirt cutting 3 Gaz \n❤️Trouser Cutting 2.5.   Gaz \n\n*Wholesale Price 2300\nExcluded delivery","storeId":"STORE_PMHTTXWAY"},{"id":"NTBE3AN88","name":" BAREEZE  EMBROIDERED KHADDAR 2 PIECE","code":"105","brand":"GENERAL","category":"GENERAL","price":2300,"stock":0,"unit":"piece","image":"https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(31).jpeg","images":["https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(31).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(32).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(33).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(34).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(35).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(36).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(37).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(38).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(39).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(40).jpeg"],"details":"MOST DEMANDING BAREEZE  EMBROIDERED khaddar 2 PIECE \nBareeze Khaddar | 2pcs \nPure khaddar  ✅ \n⚫️ Front fully embroidered shirt \n⚫️ sleeves plane\n⚫️ back plane \n⚫️ dyed khaddar  trouser  \n❤️Shirt cutting 3 Gaz \n❤️Trouser Cutting 2.5.   Gaz \n\n*Wholesale Price 2300\nExcluded delivery","storeId":"STORE_PMHTTXWAY"},{"id":"SR0E0IK9B","name":" BAREEZE  EMBROIDERED KHADDAR 2 PIECE","code":"106","brand":"GENERAL","category":"GENERAL","price":2300,"stock":0,"unit":"piece","image":"https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(21).jpeg","images":["https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(21).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(22).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(23).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(24).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(25).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(26).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(27).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(28).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(29).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(30).jpeg"],"details":"MOST DEMANDING BAREEZE  EMBROIDERED khaddar 2 PIECE \nBareeze Khaddar | 2pcs \nPure khaddar  ✅ \n⚫️ Front fully embroidered shirt \n⚫️ sleeves plane\n⚫️ back plane \n⚫️ dyed khaddar  trouser  \n❤️Shirt cutting 3 Gaz \n❤️Trouser Cutting 2.5.   Gaz \n\n*Wholesale Price 2300\nExcluded delivery","storeId":"STORE_PMHTTXWAY"},{"id":"SOU4F6X72","name":"4G DEVICE","code":"101","brand":"AIR-WIFI IMPORTED","category":"AIR-WIFI IMPORTED","price":7500,"stock":1,"unit":"piece","image":"https://raw.githubusercontent.com/juanaamirhussain/transacto/main/ghebbazar.xyz/101.%20Air-Wifi.png","images":["https://raw.githubusercontent.com/juanaamirhussain/transacto/main/ghebbazar.xyz/101.%20Air-Wifi.png"],"details":"* 4g data wifi device support all network\n* Offical pta approved\n* Used/ imported\n* Battery timing 8 hour's \n* Charger : type c","storeId":"STORE_MNSKPE1EM"},{"id":"JKPLAV9T9","name":"PRINTED LAWN 3 PIECE ","code":"AHH2T0","brand":"GENERAL","category":"GENERAL","price":2200,"stock":0,"unit":"piece","image":"https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/104/104.%202%20Piece%20Lawn%20(1).jpeg","images":["https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/104/104.%202%20Piece%20Lawn%20(1).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/104/104.%202%20Piece%20Lawn%20(2).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/104/104.%202%20Piece%20Lawn%20(3).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/104/104.%202%20Piece%20Lawn%20(4).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/104/104.%202%20Piece%20Lawn%20(5).jpeg"],"details":"asa lawn 3 piece \n2200","storeId":""},{"id":"D8MBTD58R","name":"STRONG 26 INCH CYCLE","code":"102","brand":"STRONG","category":"STRONG","price":40000,"stock":1,"unit":"piece","image":"https://raw.githubusercontent.com/juanaamirhussain/transacto/main/ghebbazar.xyz/102.%20Strong%20Cycle%20(1).png","images":["https://raw.githubusercontent.com/juanaamirhussain/transacto/main/ghebbazar.xyz/102.%20Strong%20Cycle%20(1).png","https://raw.githubusercontent.com/juanaamirhussain/transacto/main/ghebbazar.xyz/102.%20Strong%20Cycle%20(2).png"],"details":"* Strong 26 inch gear cycle\n* 3 Gear front\n* 7 gear back\n* condition : new\n* Available : Ikhlas ","storeId":"STORE_MNSKPE1EM"}];
+var INITIAL_PRODUCTS = [{"id":"IXOMJLT1H","name":" BAREEZE  EMBROIDERED KHADDAR 2 PIECE","code":"103","brand":"BAREEZE KHADDAR","category":"BAREEZE KHADDAR","price":2300,"stock":0,"unit":"piece","image":"https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(1).jpeg","images":["https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(1).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(2).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(3).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(4).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(5).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(6).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(7).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(8).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(9).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(10).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(11).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(12).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(13).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(14).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(15).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(16).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(17).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(18).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(19).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(20).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(21).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(22).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(23).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(24).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(25).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(26).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(27).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(28).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(29).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(30).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(31).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(32).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(33).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(34).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(35).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(36).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(37).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(38).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(39).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE/103.%20BAREEZE%20%20EMBROIDERED%20khaddar%202%20PIECE%20(40).jpeg"],"details":"MOST DEMANDING BAREEZE  EMBROIDERED khaddar 2 PIECE \nBareeze Khaddar | 2pcs \nPure khaddar  ✅ \n⚫️ Front fully embroidered shirt \n⚫️ sleeves plane\n⚫️ back plane \n⚫️ dyed khaddar  trouser  \n❤️Shirt cutting 3 Gaz \n❤️Trouser Cutting 2.5.   Gaz \n\n*Wholesale Price 2300\nExcluded delivery","storeId":"STORE_PMHTTXWAY"},{"id":"SOU4F6X72","name":"4G DEVICE","code":"101","brand":"AIR-WIFI IMPORTED","category":"AIR-WIFI IMPORTED","price":7500,"stock":1,"unit":"piece","image":"https://raw.githubusercontent.com/juanaamirhussain/transacto/main/ghebbazar.xyz/101.%20Air-Wifi.png","images":["https://raw.githubusercontent.com/juanaamirhussain/transacto/main/ghebbazar.xyz/101.%20Air-Wifi.png"],"details":"* LOCATION: AVAILABLE AT IKHLAS/ TEHSIL PINDIGHEB\n* 4G DATA WIFI DEVICE SUPPORT ALL NETWORK\n* OFFICAL PTA APPROVED\n* USED/ IMPORTED\n* BATTERY TIMING 8 HOUR'S \n* CHARGER: TYPE C","storeId":"STORE_MNSKPE1EM"},{"id":"VYM2N1YQD","name":"BLADE LESS NECK FAN","code":"7Y9T2L","brand":"COOL BREEZE","category":"COOL BREEZE","price":1800,"stock":0,"unit":"piece","image":"https://raw.githubusercontent.com/juanaamirhussain/transacto/main/ghebbazar.xyz/NECK%20FAN.jpg","images":["https://raw.githubusercontent.com/juanaamirhussain/transacto/main/ghebbazar.xyz/NECK%20FAN.jpg"],"details":"CONDITION : 2 DAYS USED\nPRODUCT AVAILABLE AT : IKHLAS","storeId":""},{"id":"JKPLAV9T9","name":"PRINTED LAWN 3 PIECE ","code":"104","brand":"GENERAL","category":"GENERAL","price":2200,"stock":0,"unit":"piece","image":"https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/104/104.%202%20Piece%20Lawn%20(1).jpeg","images":["https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/104/104.%202%20Piece%20Lawn%20(1).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/104/104.%202%20Piece%20Lawn%20(2).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/104/104.%202%20Piece%20Lawn%20(3).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/104/104.%202%20Piece%20Lawn%20(4).jpeg","https://raw.githubusercontent.com/juanaamirhussain/transacto/3736da54acaa86f2e665c5440f3e6828dd93f5d3/104/104.%202%20Piece%20Lawn%20(5).jpeg"],"details":"ASA PRINTED LAWN 3 PIECE \n2200 EXCLUDED DELIVERY!","storeId":""},{"id":"D8MBTD58R","name":"STRONG 26 INCH CYCLE","code":"102","brand":"STRONG","category":"STRONG","price":40000,"stock":1,"unit":"piece","image":"https://raw.githubusercontent.com/juanaamirhussain/transacto/main/ghebbazar.xyz/102.%20Strong%20Cycle%20(1).png","images":["https://raw.githubusercontent.com/juanaamirhussain/transacto/main/ghebbazar.xyz/102.%20Strong%20Cycle%20(1).png","https://raw.githubusercontent.com/juanaamirhussain/transacto/main/ghebbazar.xyz/102.%20Strong%20Cycle%20(2).png"],"details":"* lOCATION: AVAILABLE AT IKHLAS\n* Strong 26 inch gear cycle\n* 3 Gear front\n* 7 gear back\n* condition : new\n* Available : Ikhlas ","storeId":"STORE_MNSKPE1EM"}];
 var STORES = [{"id":"STORE_MNSKPE1EM","name":"EESA STORE","ownerName":"AAMIR HUSSAIN","contactNumber":"+923295453167"},{"id":"STORE_PMHTTXWAY","name":"ASA CLOTHS","ownerName":"AYAN & SAAD","contactNumber":"+923395453167"}];
 
 var products = [];
@@ -1001,6 +1114,12 @@ var currentSlide = 0;
 var popupTimer = null;
 var popupCountdownTimer = null;
 var popupSecondsLeft = 7;
+
+function isVideoUrl(url) {
+    if (!url) return false;
+    var str = String(url).toLowerCase();
+    return str.indexOf('.mp4') !== -1 || str.indexOf('.webm') !== -1 || str.indexOf('.ogg') !== -1 || str.indexOf('.mov') !== -1 || str.indexOf('data:video') !== -1;
+}
 
 function init(){
     showNoticePopup();
@@ -1103,7 +1222,8 @@ function renderProducts(){
 
     grid.innerHTML = filtered.map(function(product) {
         var imgs = (product.images && product.images.length) ? product.images : (product.image ? [product.image] : []);
-        var image = imgs.length ? imgs[0] : placeholderImage();
+        var firstMedia = imgs.length ? imgs[0] : placeholderImage();
+        var isVid = isVideoUrl(firstMedia);
         var priceNum = Number(product.price || product.sellPrice || 0);
 
         var storeName = "";
@@ -1115,7 +1235,13 @@ function renderProducts(){
         var fullDetailsClean = formatDetails(product.description || product.details || "");
 
         return '<article class="product-card" data-action="view" data-id="' + escapeAttribute(product.id) + '">' +
-            '<img class="product-image" src="' + escapeAttribute(image) + '" alt="' + escapeHtml(product.name) + '" onerror="this.src=placeholderImage()">' +
+            '<div class="product-image-wrap" data-action="view" data-id="' + escapeAttribute(product.id) + '">' +
+                (isVid
+                    ? '<video class="product-image" src="' + escapeAttribute(firstMedia) + '" muted playsinline preload="metadata"></video>'
+                    : '<img class="product-image" src="' + escapeAttribute(firstMedia) + '" alt="' + escapeHtml(product.name) + '" loading="lazy" onerror="this.src=placeholderImage()">'
+                ) +
+                '<span class="image-caption">Click to View More Images</span>' +
+            '</div>' +
             '<div class="product-info">' +
                 '<div class="meta-row">' +
                     '<div class="category">' + escapeHtml(product.category || product.brand || "General") + '</div>' +
@@ -1125,7 +1251,7 @@ function renderProducts(){
                 (fullDetailsClean ? '<div class="product-description">' + escapeHtml(fullDetailsClean) + '</div>' : '') +
                 '<div class="price">Rs. ' + formatPrice(priceNum) + '</div>' +
                 '<div class="card-actions">' +
-                    '<button class="btn btn-primary btn-full" data-action="view" data-id="' + escapeAttribute(product.id) + '">View Images</button>' +
+                    '<button class="btn btn-success btn-full" data-action="order" data-id="' + escapeAttribute(product.id) + '">🛍️ Order Now</button>' +
                     '<button class="btn btn-dark" data-action="cart" data-id="' + escapeAttribute(product.id) + '">🛒 Add</button>' +
                 '</div>' +
             '</div>' +
@@ -1141,8 +1267,9 @@ if (gridEl) {
             e.stopPropagation();
             var action = actionBtn.getAttribute("data-action");
             var id = actionBtn.getAttribute("data-id");
-            if (action === "view") openProduct(id);
-            if (action === "cart") addToCart(id);
+            if (action === "order") orderProductDirect(id);
+            else if (action === "view") openProduct(id);
+            else if (action === "cart") addToCart(id);
             return;
         }
         var card = e.target.closest(".product-card[data-id]");
@@ -1235,12 +1362,16 @@ function buildSlider(images){
     var dots = document.getElementById("sliderDots");
     var thumbnails = document.getElementById("thumbnails");
 
-    if(!images.length){
+    if(!images || !images.length){
         images = [placeholderImage()];
     }
 
     track.innerHTML = images.map(function(src){
-        return '<div class="slide"><img src="' + escapeAttribute(src) + '" alt="Product image" onerror="this.src=placeholderImage()"></div>';
+        var isVid = isVideoUrl(src);
+        if (isVid) {
+            return '<div class="slide"><video src="' + escapeAttribute(src) + '" controls playsinline preload="metadata" style="width:100%; height:100%; object-fit:contain;"></video></div>';
+        }
+        return '<div class="slide"><img src="' + escapeAttribute(src) + '" alt="Product media" onerror="this.src=placeholderImage()"></div>';
     }).join("");
 
     dots.innerHTML = images.map(function(_, index){
@@ -1248,7 +1379,13 @@ function buildSlider(images){
     }).join("");
 
     thumbnails.innerHTML = images.map(function(src, index){
-        return '<div class="thumbnail ' + (index === 0 ? "active" : "") + '" data-slide="' + index + '"><img src="' + escapeAttribute(src) + '" alt="Thumbnail" onerror="this.src=placeholderImage()"></div>';
+        var isVid = isVideoUrl(src);
+        return '<div class="thumbnail ' + (index === 0 ? "active" : "") + '" data-slide="' + index + '">' +
+            (isVid
+                ? '<video src="' + escapeAttribute(src) + '" muted preload="metadata" style="width:100%; height:100%; object-fit:cover;"></video>'
+                : '<img src="' + escapeAttribute(src) + '" alt="Thumbnail" onerror="this.src=placeholderImage()">'
+            ) +
+        '</div>';
     }).join("");
 
     updateSlider();
@@ -1311,25 +1448,15 @@ var slider = document.getElementById("detailSlider");
 if(slider){
     slider.addEventListener("touchstart", function(event){
         touchStartX = event.changedTouches[0].screenX;
-    });
+    }, {passive: true});
     slider.addEventListener("touchend", function(event){
         var touchEndX = event.changedTouches[0].screenX;
         var difference = touchStartX - touchEndX;
-        if(Math.abs(difference) > 50){
+        if(Math.abs(difference) > 40){
             changeSlide(difference > 0 ? 1 : -1);
         }
-    });
+    }, {passive: true});
 }
-
-setInterval(function(){
-    var modal = document.getElementById("productModal");
-    if(modal && modal.classList.contains("show") && currentProduct){
-        var imgs = (currentProduct.images && currentProduct.images.length) ? currentProduct.images : (currentProduct.image ? [currentProduct.image] : []);
-        if(imgs.length > 1){
-            changeSlide(1);
-        }
-    }
-}, 5000);
 
 function addToCart(id){
     var product = products.find(function(p){ return p.id === id; });
@@ -1382,20 +1509,24 @@ function renderCart(){
         total += subtotal;
 
         var imgs = (product.images && product.images.length) ? product.images : (product.image ? [product.image] : []);
-        var image = imgs.length ? imgs[0] : placeholderImage();
+        var firstMedia = imgs.length ? imgs[0] : placeholderImage();
+        var isVid = isVideoUrl(firstMedia);
 
         return '<div class="cart-item">' +
-            '<img src="' + escapeAttribute(image) + '" alt="' + escapeHtml(product.name) + '">' +
+            (isVid
+                ? '<video src="' + escapeAttribute(firstMedia) + '" muted playsinline style="width:64px; height:64px; object-fit:cover; border-radius:9px;"></video>'
+                : '<img src="' + escapeAttribute(firstMedia) + '" alt="' + escapeHtml(product.name) + '" onerror="this.src=placeholderImage()">'
+            ) +
             '<div class="cart-info">' +
                 '<strong>' + escapeHtml(product.name) + '</strong>' +
                 '<small style="display:block; color:var(--muted); margin-top:2px;">Rs. ' + formatPrice(priceNum) + '</small>' +
                 '<div style="margin-top:7px; display:flex; align-items:center;">' +
-                    '<button class="btn btn-dark cart-qty-btn" data-id="' + escapeAttribute(product.id) + '" data-change="-1" style="min-height:30px; padding:2px 10px;">−</button>' +
-                    '<strong style="margin:0 12px;">' + item.quantity + '</strong>' +
-                    '<button class="btn btn-dark cart-qty-btn" data-id="' + escapeAttribute(product.id) + '" data-change="1" style="min-height:30px; padding:2px 10px;">+</button>' +
+                    '<button class="btn btn-dark cart-qty-btn" data-id="' + escapeAttribute(product.id) + '" data-change="-1" style="min-height:28px; padding:2px 9px;">−</button>' +
+                    '<strong style="margin:0 10px; font-size:14px;">' + item.quantity + '</strong>' +
+                    '<button class="btn btn-dark cart-qty-btn" data-id="' + escapeAttribute(product.id) + '" data-change="1" style="min-height:28px; padding:2px 9px;">+</button>' +
                 '</div>' +
             '</div>' +
-            '<strong style="color:var(--primary);">Rs. ' + formatPrice(subtotal) + '</strong>' +
+            '<strong style="color:var(--primary); font-size:15px;">Rs. ' + formatPrice(subtotal) + '</strong>' +
         '</div>';
     }).join("");
 
@@ -1429,35 +1560,50 @@ function changeQuantity(id, amount){
     renderCart();
 }
 
-function orderCurrentProduct(){
-    if(!currentProduct) return;
-
+function getDirectOrderUrl(product){
     var targetWaNumber = WHATSAPP_NUMBER;
     var storeInfoName = STORE_NAME;
 
-    if(currentProduct.storeId && Array.isArray(STORES)){
-        var associatedStore = STORES.find(function(s){ return s.id === currentProduct.storeId; });
+    if(product.storeId && Array.isArray(STORES)){
+        var associatedStore = STORES.find(function(s){ return s.id === product.storeId; });
         if(associatedStore){
             if(associatedStore.contactNumber && associatedStore.contactNumber.trim() !== ''){
                 targetWaNumber = associatedStore.contactNumber.replace(/[^0-9]/g, '');
             }
-            storeInfoName = associatedStore.name;
+            if(associatedStore.name && associatedStore.name.trim() !== ''){
+                storeInfoName = associatedStore.name;
+            }
         }
     }
 
-    var priceNum = Number(currentProduct.price || currentProduct.sellPrice || 0);
-    var message =
-        "Hello " + encodeURIComponent(storeInfoName) + ",%0A%0AI want to order:%0A%0A" +
-        "Product: " + encodeURIComponent(currentProduct.name) + "%0A" +
-        "SKU / Code: " + encodeURIComponent(currentProduct.code || "N/A") + "%0A" +
-        "Price: Rs. " + encodeURIComponent(formatPrice(priceNum)) + "%0A%0A" +
+    var priceNum = Number(product.price || product.sellPrice || 0);
+    var pCode = product.code || "N/A";
+
+    var messageText =
+        "Hy " + storeInfoName + ",\n" +
+        "I want to order:\n" +
+        "Product:  " + product.name + "\n" +
+        "SKU / Code: " + pCode + "\n" +
+        "Price: Rs. " + formatPrice(priceNum) + "\n" +
         "Please provide order details.";
 
     var isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     var baseUrl = isMobileDevice ? "https://api.whatsapp.com/send" : "https://web.whatsapp.com/send";
-    var targetUrl = targetWaNumber ? (baseUrl + "?phone=" + targetWaNumber + "&text=" + message) : (baseUrl + "?text=" + message);
+    var encodedMsg = encodeURIComponent(messageText);
+    return targetWaNumber ? (baseUrl + "?phone=" + targetWaNumber + "&text=" + encodedMsg) : (baseUrl + "?text=" + encodedMsg);
+}
 
-    window.open(targetUrl, "_blank");
+function orderProductDirect(id){
+    var product = products.find(function(p){ return p.id === id; });
+    if(!product) return;
+    var url = getDirectOrderUrl(product);
+    window.open(url, "_blank");
+}
+
+function orderCurrentProduct(){
+    if(!currentProduct) return;
+    var url = getDirectOrderUrl(currentProduct);
+    window.open(url, "_blank");
 }
 
 function orderCart(){
@@ -1510,25 +1656,26 @@ function orderCart(){
         var priceNum = Number(product.price || product.sellPrice || 0);
         var subtotal = priceNum * item.quantity;
         total += subtotal;
-        orderSummary += (idx + 1) + ". " + product.name + " (" + (product.code || "SKU") + ") x " + item.quantity + " = Rs. " + formatPrice(subtotal) + "%0A";
+        orderSummary += (idx + 1) + ". " + product.name + " (" + (product.code || "SKU") + ") x " + item.quantity + " = Rs. " + formatPrice(subtotal) + "\n";
     });
 
     var textMsg =
-        "*Store:* " + encodeURIComponent(STORE_NAME) + "%0A" +
-        "📍 *Order Route:* " + encodeURIComponent(routeTypeLabel) + "%0A" +
-        "--------------------------------%0A" +
-        "👤 *Customer Details:*%0A" +
-        "*Name:* " + encodeURIComponent(name) + "%0A" +
-        "📍 *Delivery Address:* " + encodeURIComponent(address) + "%0A" +
-        "--------------------------------%0A" +
-        "📦 *Order Summary:*%0A" +
+        "*Store:* " + STORE_NAME + "\n" +
+        "📍 *Order Route:* " + routeTypeLabel + "\n" +
+        "--------------------------------\n" +
+        "👤 *Customer Details:*\n" +
+        "*Name:* " + name + "\n" +
+        "📍 *Delivery Address:* " + address + "\n" +
+        "--------------------------------\n" +
+        "📦 *Order Summary:*\n" +
         orderSummary +
-        "--------------------------------%0A" +
-        "💰 *Total Payable:* Rs. " + encodeURIComponent(formatPrice(total));
+        "--------------------------------\n" +
+        "💰 *Total Payable:* Rs. " + formatPrice(total);
 
     var isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     var baseUrl = isMobileDevice ? "https://api.whatsapp.com/send" : "https://web.whatsapp.com/send";
-    var targetUrl = targetWaNumber ? (baseUrl + "?phone=" + targetWaNumber + "&text=" + textMsg) : (baseUrl + "?text=" + textMsg);
+    var encodedMsg = encodeURIComponent(textMsg);
+    var targetUrl = targetWaNumber ? (baseUrl + "?phone=" + targetWaNumber + "&text=" + encodedMsg) : (baseUrl + "?text=" + encodedMsg);
 
     window.open(targetUrl, "_blank");
 
